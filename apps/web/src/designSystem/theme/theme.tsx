@@ -43,7 +43,7 @@ export const Theme = {
     Layout: {
       headerBg: 'white',
       footerBg: 'white',
-      bodyBg: 'white',
+      bodyBg: 'aqua',
       siderBg: '#fbfbfb',
     },
     Menu: {

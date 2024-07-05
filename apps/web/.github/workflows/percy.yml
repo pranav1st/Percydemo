@@ -22,6 +22,6 @@ jobs:
         run: npm ci # make sure you have `@percy/cli` installed and `package-lock.json` file
 
       - name: Run Percy
-        run: npx percy snapshot https://maxim.mazurok.com/sitemap.xml # replace with your sitemap URL
+        run: npx percy snapshot http://localhost:8099/sitemap-0.xml # replace with your sitemap URL
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
