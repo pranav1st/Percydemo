@@ -1,0 +1,27 @@
+name: Percy
+
+on:
+  schedule:
+    - cron: '0 23 * * *'
+  workflow_dispatch: # for manual testing
+
+jobs:
+  percy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc' # to create this file, run `node -v > .nvmrc`
+          cache: 'npm'
+
+      - name: Install NPM dependencies
+        run: npm ci # make sure you have `@percy/cli` installed and `package-lock.json` file
+
+      - name: Run Percy
+        run: npx percy snapshot https://maxim.mazurok.com/sitemap.xml # replace with your sitemap URL
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
