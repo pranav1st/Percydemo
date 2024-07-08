@@ -21,6 +21,9 @@ jobs:
       - name: Install NPM dependencies
         run: npm ci # make sure you have `@percy/cli` installed and `package-lock.json` file
 
+      - name: Run server
+        run: pnpm run start
+
       - name: Run Percy
         run: npx percy snapshot http://localhost:8099/sitemap-0.xml # replace with your sitemap URL
         env:
